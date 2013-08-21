@@ -110,7 +110,7 @@ string wgsFile::getdate(char* filepath)
 	struct tm *m_localtime=localtime(m_second);		//localtime将时间戳转换为本地时间
 
 	stringstream stream;
-	stream<<"DT["<<m_localtime->tm_year+1900<<"-"<<m_localtime->tm_mon<<"-"<<m_localtime->tm_mday<<"]";
+	stream<<"DT["<<m_localtime->tm_year+1900<<"-"<<m_localtime->tm_mon+1<<"-"<<m_localtime->tm_mday<<"]";
 	stream>>date;
 	stream.clear();
 	stream.str("");
