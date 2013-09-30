@@ -7,6 +7,7 @@
 *.log
 *.gz
 *.Po
+*.cache
 
 # Compiled Dynamic libraries
 *.so
