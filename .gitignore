@@ -4,6 +4,9 @@
 *.o
 *.bak
 *.txt
+*.log
+*.gz
+*.Po
 
 # Compiled Dynamic libraries
 *.so
