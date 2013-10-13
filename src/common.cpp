@@ -3,31 +3,31 @@
 string wgsFile::common_info()
 {
 	stringstream stream;
-	string str="(;CA[gb2312]PC[QQÎ§Æå]US[wgs2sgf]SO[wgs2sgf]CP[power by wgs2sgf \ncopyright @ annhe]MULTIGOGM[1]";
+	string str="(;CA[gb2312]PC[QQå›´æ£‹]US[wgs2sgf]SO[wgs2sgf]CP[power by wgs2sgf \ncopyright @ annhe]MULTIGOGM[1]";
 	return str;
 }
 void wgsFile::help()
 {
-	cout<<"ÓÃ·¨: wgs2sgf Ô´ÎÄ¼þ\n"
-		<<"  or: wgs2sgf *.wgs(Ê¹ÓÃÍ¨Åä·û)\n"
-		<<"  or: wgs2sgf [Ñ¡Ïî]\n\n"
-		<<"Ê¾Àý: wgs2sgf qqgo.wgs\n\n"
-		<<"¿ÉÓÃÑ¡Ïî:\n"
-		<<"-qq   ×ª»»qqºÅ\n"
-		<<"-v    ÏÔÊ¾°æ±¾ÐÅÏ¢\n"
-		<<"-help ÏÔÊ¾´Ë°ïÖúÐÅÏ¢\n\n"
+	cout<<"ç”¨æ³•: wgs2sgf æºæ–‡ä»¶\n"
+		<<"  or: wgs2sgf *.wgs(ä½¿ç”¨é€šé…ç¬¦)\n"
+		<<"  or: wgs2sgf [é€‰é¡¹]\n\n"
+		<<"ç¤ºä¾‹: wgs2sgf qqgo.wgs\n\n"
+		<<"å¯ç”¨é€‰é¡¹:\n"
+		<<"-qq   è½¬æ¢qqå·\n"
+		<<"-v    æ˜¾ç¤ºç‰ˆæœ¬ä¿¡æ¯\n"
+		<<"-help æ˜¾ç¤ºæ­¤å¸®åŠ©ä¿¡æ¯\n\n"
 		<<"Copyright @ annhe email:admin@annhe.net\n";
 }
 
 void wgsFile::version()
 {
-	cout<<"\nQQÎ§ÆåwgsÆåÆ××ªsgfÆåÆ×¹¤¾ß V 1.4 Release20130821\n"
-		<<"×÷Õß: annhe ÁªÏµ·½Ê½:admin@annhe.net  Ö÷Ò³: www.annhe.net\n";
+	cout<<"\nQQå›´æ£‹wgsæ£‹è°±è½¬sgfæ£‹è°±å·¥å…· V 1.4 Release20130821\n"
+		<<"ä½œè€…: annhe è”ç³»æ–¹å¼:admin@annhe.net  ä¸»é¡µ: www.annhe.net\n";
 }
 
 bool wgsFile::testfile(char* filepath)
 {
-	//ÎÄ¼þ´óÐ¡ÊÇ·ñºÏ·¨,qqÎ§ÆåÎÄ¼þ×îÐ¡122×Ö½Ú
+	//æ–‡ä»¶å¤§å°æ˜¯å¦åˆæ³•,qqå›´æ£‹æ–‡ä»¶æœ€å°122å­—èŠ‚
 	read_wgs.open(filepath);
 	isfileopen(filepath);
 	read_wgs.seekg(0,ios::end);
@@ -44,13 +44,13 @@ bool wgsFile::testfile(char* filepath)
 string wgsFile::getsgf(char* filepath,int p)
 {	
 	string str=common_info()+printdan(filepath);
-	str=str+"C[ºÚ·½:    "+getname(filepath,10)+"    ";
+	str=str+"C[é»‘æ–¹:    "+getname(filepath,10)+"    ";
 	string tmpstr="";
 	stringstream stream;
 	if(brank<0)
-		stream<<abs(brank)<<"¼¶";
+		stream<<abs(brank)<<"çº§";
 	else
-		stream<<brank<<"¶Î";
+		stream<<brank<<"æ®µ";
 	stream>>tmpstr;
 	str+=tmpstr;
 	stream.clear();
@@ -58,19 +58,19 @@ string wgsFile::getsgf(char* filepath,int p)
 	
 	if(blackdan>0)
 	{
-		stream<<"(ÒµÓà"<<blackdan<<"¶Î)";
+		stream<<"(ä¸šä½™"<<blackdan<<"æ®µ)";
 		stream>>tmpstr;
 	}
 	str=str+tmpstr+"\n";
 	stream.clear();
 	stream.str("");
 	
-	str=str+"°×·½:    "+getname(filepath,58)+"    ";
+	str=str+"ç™½æ–¹:    "+getname(filepath,58)+"    ";
 	
 	if(wrank<0)
-		stream<<abs(wrank)<<"¼¶";
+		stream<<abs(wrank)<<"çº§";
 	else
-		stream<<wrank<<"¶Î";
+		stream<<wrank<<"æ®µ";
 	stream>>tmpstr;
 	str+=tmpstr;
 	stream.clear();
@@ -79,7 +79,7 @@ string wgsFile::getsgf(char* filepath,int p)
 	
 	if(whitedan>0)
 	{
-		stream<<"(ÒµÓà"<<whitedan<<"¶Î)";
+		stream<<"(ä¸šä½™"<<whitedan<<"æ®µ)";
 		stream>>tmpstr;
 	}
 	str=str+tmpstr+"\n";
@@ -89,8 +89,8 @@ string wgsFile::getsgf(char* filepath,int p)
 	getresult(filepath);
 	getdate(filepath);
 	
-	str=str+"½á¹û:    "+result.substr(3,result.length()-4)+"\n";
-	str=str+"ÈÕÆÚ:    "+date.substr(3,date.length()-4)+"]";
+	str=str+"ç»“æžœ:    "+result.substr(3,result.length()-4)+"\n";
+	str=str+"æ—¥æœŸ:    "+date.substr(3,date.length()-4)+"]";
 	
 	str=str+getcommon(filepath)+printname(filepath,p)+date+result+"\n"+getmoves(filepath);
 	return str;
